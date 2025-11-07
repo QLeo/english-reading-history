@@ -10,6 +10,7 @@ interface TableOfContentsProps {
 export default function TableOfContents({ headings }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +40,27 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       });
     };
   }, [headings]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      // Calculate scroll progress (0-100)
+      const scrollableHeight = documentHeight - windowHeight;
+      const progress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
+
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+    };
+
+    handleScroll(); // Initial calculation
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
@@ -167,12 +189,12 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
               className="h-full transition-all duration-300"
               style={{
                 background: 'var(--color-primary)',
-                width: `${((headings.findIndex(h => h.id === activeId) + 1) / headings.length) * 100}%`
+                width: `${scrollProgress}%`
               }}
             />
           </div>
           <div className="text-xs mt-2 text-right" style={{ color: 'var(--color-text-tertiary)' }}>
-            {Math.round(((headings.findIndex(h => h.id === activeId) + 1) / headings.length) * 100)}%
+            {Math.round(scrollProgress)}%
           </div>
         </div>
       </nav>

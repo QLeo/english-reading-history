@@ -22,17 +22,17 @@ export function separateEnglishKorean(content: string) {
 
   // Find Korean Translation section
   const koreanSectionIndex = sections.findIndex(section =>
-    section.includes('## Korean Translation') || section.includes('## 한국어 번역')
+    section.includes('# Korean Translation') || section.includes('# 한국어 번역')
   );
 
   // Find Questions section
   const questionsSectionIndex = sections.findIndex(section =>
-    section.includes('## Comprehension Questions')
+    section.includes('# Comprehension Questions')
   );
 
   // Find Vocabulary section
   const vocabularySectionIndex = sections.findIndex(section =>
-    section.includes('## Useful Expressions') || section.includes('## Vocabulary')
+    section.includes('# Useful Expressions') || section.includes('# Vocabulary')
   );
 
   let englishContent = '';
