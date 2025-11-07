@@ -22,6 +22,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,6 +41,9 @@ jobs:
         run: |
           cd web
           npm run build
+
+      - name: Add .nojekyll file
+        run: touch ./web/out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
