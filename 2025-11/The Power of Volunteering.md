@@ -1,0 +1,128 @@
+# Reading Passage: The Power of Volunteering
+
+When I turned sixteen, I decided to volunteer at a local animal shelter.
+I had always loved animals, but my apartment didn't allow pets.
+Volunteering seemed like the perfect way to spend time with animals while helping my community.
+
+On my first day, the shelter coordinator showed me around the facility.
+There were dozens of dogs and cats waiting to find their forever homes.
+Some had been abandoned by their previous owners, while others were rescued from difficult situations.
+My heart broke seeing so many animals in need.
+
+My main responsibilities included feeding the animals, cleaning their cages, and taking dogs for walks.
+At first, the work was physically demanding and emotionally challenging.
+Some animals were scared and didn't trust humans yet.
+However, I learned that patience and consistency were key to building trust.
+
+One dog in particular caught my attention—a golden retriever named Max.
+He had been at the shelter for six months, which was unusually long.
+Despite his friendly nature, potential adopters always passed him by because he was older.
+I spent extra time with Max, playing fetch and teaching him new tricks.
+
+After three months of volunteering, something wonderful happened.
+A family came to the shelter looking for a calm, mature dog.
+I immediately thought of Max and introduced them.
+The connection was instant, and they decided to adopt him that same day.
+Watching Max leave with his new family was one of the most rewarding moments of my life.
+
+This experience taught me that volunteering isn't just about helping others—it transforms the volunteer too.
+I developed empathy, responsibility, and a deeper appreciation for the work that animal welfare organizations do.
+Now, two years later, I still volunteer every weekend.
+I've helped dozens of animals find homes, and each success story reminds me why this work matters.
+
+---
+
+## Comprehension Questions
+
+1. **Why did the writer decide to volunteer at an animal shelter instead of getting a pet?**
+Writer's apartment didn't allow having pets.
+
+2. **What made Max's situation at the shelter unusual, and why was it difficult for him to get adopted?**
+Animals in shelter were usually adopt from some people within serveral month but Max it isn't. because Max's age is old
+
+3. **According to the writer, how does volunteering benefit the volunteer themselves?**
+volunteering is helping grow empathy, responsibility
+
+---
+
+## Korean Translation (한국어 번역)
+
+내가 열여섯 살이 되었을 때, 나는 지역 동물 보호소에서 자원봉사를 하기로 결심했다.
+나는 항상 동물을 사랑했지만, 우리 아파트는 반려동물을 허용하지 않았다.
+자원봉사는 지역사회를 돕는 동시에 동물들과 시간을 보낼 수 있는 완벽한 방법처럼 보였다.
+
+첫날, 보호소 코디네이터가 시설을 구경시켜 주었다.
+영원한 집을 찾기를 기다리는 수십 마리의 개와 고양이가 있었다.
+일부는 이전 주인에게 버림받았고, 다른 일부는 어려운 상황에서 구조되었다.
+도움이 필요한 그렇게 많은 동물들을 보니 가슴이 아팠다.
+
+내 주요 책임은 동물들에게 먹이를 주고, 우리를 청소하고, 개들을 산책시키는 것이었다.
+처음에는 그 일이 육체적으로 힘들고 감정적으로 어려웠다.
+일부 동물들은 겁을 먹었고 아직 인간을 신뢰하지 않았다.
+하지만 나는 인내심과 일관성이 신뢰를 쌓는 열쇠라는 것을 배웠다.
+
+특히 한 마리의 개가 내 관심을 끌었다—Max라는 이름의 골든 리트리버였다.
+그는 6개월 동안 보호소에 있었는데, 이는 비정상적으로 긴 기간이었다.
+그의 친근한 성격에도 불구하고, 잠재적 입양자들은 그가 나이가 많다는 이유로 항상 그를 지나쳤다.
+나는 Max와 특별히 더 많은 시간을 보내며 공놀이를 하고 새로운 재주를 가르쳤다.
+
+자원봉사를 한 지 3개월 후, 멋진 일이 일어났다.
+한 가족이 차분하고 성숙한 개를 찾아 보호소에 왔다.
+나는 즉시 Max를 떠올렸고 그들에게 소개했다.
+교감은 즉각적이었고, 그들은 바로 그날 그를 입양하기로 결정했다.
+Max가 새 가족과 함께 떠나는 것을 보는 것은 내 인생에서 가장 보람 있는 순간 중 하나였다.
+
+이 경험은 나에게 자원봉사가 단지 다른 사람들을 돕는 것이 아니라 자원봉사자 자신도 변화시킨다는 것을 가르쳐 주었다.
+나는 공감 능력, 책임감, 그리고 동물 복지 단체들이 하는 일에 대한 더 깊은 감사를 발전시켰다.
+이제 2년이 지난 지금도, 나는 여전히 매주 주말마다 자원봉사를 한다.
+나는 수십 마리의 동물들이 집을 찾도록 도왔고, 각각의 성공 사례는 이 일이 왜 중요한지를 상기시켜 준다.
+
+---
+
+## Useful Expressions & Vocabulary
+
+**Phrases:**
+- turn sixteen - 열여섯 살이 되다
+- animal shelter - 동물 보호소
+- forever home - 영원한 집 (입양될 집)
+- in need - 도움이 필요한
+- catch one's attention - ~의 관심을 끌다
+- pass someone by - ~를 지나치다
+- potential adopter - 잠재적 입양자
+- build trust - 신뢰를 쌓다
+
+**Nouns:**
+- volunteer - 자원봉사자
+- community - 지역사회
+- coordinator - 코디네이터, 조정자
+- facility - 시설
+- responsibility - 책임
+- cage - 우리, 케이지
+- patience - 인내심
+- consistency - 일관성
+- golden retriever - 골든 리트리버
+- connection - 교감, 연결
+- empathy - 공감 능력
+- appreciation - 감사
+- welfare - 복지
+- success story - 성공 사례
+
+**Adjectives:**
+- local - 지역의
+- physically demanding - 육체적으로 힘든
+- emotionally challenging - 감정적으로 어려운
+- friendly - 친근한
+- mature - 성숙한
+- calm - 차분한
+- rewarding - 보람 있는
+- instant - 즉각적인
+
+**Verbs:**
+- volunteer - 자원봉사하다
+- allow - 허용하다
+- abandon - 버리다
+- rescue - 구조하다
+- feed - 먹이를 주다
+- adopt - 입양하다
+- transform - 변화시키다
+- develop - 발전시키다
