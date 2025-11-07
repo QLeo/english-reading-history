@@ -16,69 +16,86 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
   const [displayMode, setDisplayMode] = useState<DisplayMode>('english');
 
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-semibold">
+    <article className="container-responsive spacing-section">
+      {/* Header - Mobile Optimized */}
+      <header className="mb-8 sm:mb-12 animate-fade-in">
+        {/* Meta Information */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <span className="badge" style={{
+            background: 'var(--color-accent-100)',
+            color: 'var(--color-accent-800)'
+          }}>
             {post.difficulty}
           </span>
-          <span className="text-gray-400 dark:text-gray-500">•</span>
-          <span className="text-sm text-gray-600 dark:text-gray-400">{post.readingTime}</span>
-          <span className="text-gray-400 dark:text-gray-500">•</span>
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-[var(--color-text-tertiary)] hidden sm:inline">•</span>
+          <span className="text-sm text-[var(--color-text-tertiary)]">{post.readingTime}</span>
+          <span className="text-[var(--color-text-tertiary)] hidden sm:inline">•</span>
+          <span className="text-sm text-[var(--color-text-tertiary)]">
             {new Date(post.date).toLocaleDateString('ko-KR')}
           </span>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        {/* Title */}
+        <h1 className="text-responsive-h1 mb-4 sm:mb-6 text-[var(--color-text-primary)] leading-tight">
           {post.title}
         </h1>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+        {/* Category & Tags */}
+        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+          <span className="badge" style={{
+            background: 'var(--color-primary-100)',
+            color: 'var(--color-primary-800)'
+          }}>
             {post.category}
           </span>
           {post.tags.map(tag => (
             <span
               key={tag}
-              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm"
+              className="badge"
+              style={{
+                background: 'var(--color-bg-secondary)',
+                color: 'var(--color-text-secondary)',
+                border: '1px solid var(--color-border-light)'
+              }}
             >
               #{tag}
             </span>
           ))}
         </div>
 
-        <div className="flex justify-center">
+        {/* Language Toggle - Sticky on mobile */}
+        <div className="flex justify-center sticky top-0 z-10 bg-[var(--color-bg-primary)] py-4 -mx-4 px-4 sm:static sm:bg-transparent sm:py-0 sm:mx-0 sm:px-0">
           <LanguageToggle onModeChange={setDisplayMode} />
         </div>
       </header>
 
-      {/* Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      {/* Main Content - Improved Spacing */}
+      <div className="prose prose-lg max-w-none mb-8 sm:mb-12">
         {displayMode === 'english' && (
           <div
-            className="english-content"
+            className="english-content animate-fade-in"
             dangerouslySetInnerHTML={{ __html: englishHtml }}
           />
         )}
 
         {displayMode === 'korean' && koreanHtml && (
           <div
-            className="korean-content"
+            className="korean-content animate-fade-in"
             dangerouslySetInnerHTML={{ __html: koreanHtml }}
           />
         )}
 
         {displayMode === 'both' && (
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
             <div
-              className="english-content border-r dark:border-gray-700 pr-8"
+              className="english-content lg:border-r lg:pr-8 animate-fade-in"
+              style={{ borderColor: 'var(--color-border-light)' }}
               dangerouslySetInnerHTML={{ __html: englishHtml }}
             />
             {koreanHtml && (
               <div
-                className="korean-content"
+                className="korean-content animate-fade-in"
+                style={{ animationDelay: '0.1s' }}
                 dangerouslySetInnerHTML={{ __html: koreanHtml }}
               />
             )}
@@ -86,24 +103,76 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
         )}
       </div>
 
-      {/* Questions Section */}
+      {/* Comprehension Questions Section - Enhanced with Icons */}
       {questionsHtml && (
-        <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <section
+          className="section-container mb-6 sm:mb-8 animate-fade-in"
+          style={{
+            background: 'var(--color-section-questions)',
+            borderColor: 'var(--color-primary-300)'
+          }}
+        >
+          <div className="flex items-start gap-3 mb-4">
+            <span className="text-2xl sm:text-3xl" role="img" aria-label="Questions">
+              ❓
+            </span>
+            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
+              Comprehension Questions
+            </h2>
+          </div>
           <div
-            className="prose dark:prose-invert max-w-none"
+            className="prose max-w-none"
             dangerouslySetInnerHTML={{ __html: questionsHtml }}
           />
-        </div>
+        </section>
       )}
 
-      {/* Vocabulary Section */}
-      {vocabularyHtml && (
-        <div className="mt-8 p-6 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+      {/* Korean Translation Section - Enhanced */}
+      {koreanHtml && displayMode === 'english' && (
+        <section
+          className="section-container mb-6 sm:mb-8 animate-fade-in"
+          style={{
+            background: 'var(--color-section-translation)',
+            borderColor: 'var(--color-accent-300)'
+          }}
+        >
+          <div className="flex items-start gap-3 mb-4">
+            <span className="text-2xl sm:text-3xl" role="img" aria-label="Translation">
+              🌐
+            </span>
+            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
+              한국어 번역 (Korean Translation)
+            </h2>
+          </div>
           <div
-            className="prose dark:prose-invert max-w-none"
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{ __html: koreanHtml }}
+          />
+        </section>
+      )}
+
+      {/* Vocabulary & Expressions Section - Enhanced */}
+      {vocabularyHtml && (
+        <section
+          className="section-container animate-fade-in"
+          style={{
+            background: 'var(--color-section-vocabulary)',
+            borderColor: 'var(--color-accent-300)'
+          }}
+        >
+          <div className="flex items-start gap-3 mb-4">
+            <span className="text-2xl sm:text-3xl" role="img" aria-label="Vocabulary">
+              📚
+            </span>
+            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
+              Useful Expressions & Vocabulary
+            </h2>
+          </div>
+          <div
+            className="prose max-w-none"
             dangerouslySetInnerHTML={{ __html: vocabularyHtml }}
           />
-        </div>
+        </section>
       )}
     </article>
   );

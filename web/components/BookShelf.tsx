@@ -24,71 +24,142 @@ export default function BookShelf({ posts }: BookShelfProps) {
   const categories = Object.keys(groupedPosts);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+    <div className="container-responsive spacing-section">
+      {/* Hero Header */}
+      <header className="mb-12 sm:mb-16 text-center animate-fade-in">
+        <h1 className="text-responsive-h1 mb-4 sm:mb-6 text-[var(--color-text-primary)]">
           English Reading Library
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
+        <p className="text-responsive-body text-[var(--color-text-secondary)] max-w-2xl mx-auto">
           Improve your English reading skills with bilingual content
         </p>
-      </div>
+      </header>
 
-      {categories.map(category => (
-        <div key={category} className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+      {/* Category Sections */}
+      {categories.map((category, idx) => (
+        <section
+          key={category}
+          className="mb-12 sm:mb-16 animate-fade-in"
+          style={{ animationDelay: `${idx * 0.1}s` }}
+        >
+          {/* Category Header */}
+          <div className="flex flex-wrap items-center gap-3 mb-6 sm:mb-8">
+            <h2 className="text-responsive-h2 text-[var(--color-text-primary)]">
               {category}
             </h2>
-            <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+            <span
+              className="badge"
+              style={{
+                background: 'var(--color-primary-100)',
+                color: 'var(--color-primary-800)'
+              }}
+            >
               {groupedPosts[category].length} {groupedPosts[category].length === 1 ? 'article' : 'articles'}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {groupedPosts[category].map(post => (
               <Link
                 key={post.slug}
                 href={`/read/${post.slug}`}
-                className="group block p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400"
+                className="card card-hover group block p-5 sm:p-6"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded text-xs font-semibold">
+                {/* Card Header */}
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <span
+                    className="badge text-xs sm:text-sm"
+                    style={{
+                      background: 'var(--color-accent-100)',
+                      color: 'var(--color-accent-800)'
+                    }}
+                  >
                     {post.difficulty}
                   </span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs sm:text-sm text-[var(--color-text-tertiary)] flex items-center gap-1">
+                    <span role="img" aria-label="Reading time">⏱️</span>
                     {post.readingTime}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {/* Card Title */}
+                <h3
+                  className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 transition-colors"
+                  style={{
+                    color: 'var(--color-text-primary)'
+                  }}
+                >
                   {post.title}
                 </h3>
 
-                <div className="flex flex-wrap gap-2 mb-3">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
                   {post.tags.slice(0, 3).map(tag => (
                     <span
                       key={tag}
-                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs"
+                      className="px-2 py-1 rounded-md text-xs"
+                      style={{
+                        background: 'var(--color-bg-secondary)',
+                        color: 'var(--color-text-secondary)',
+                        border: '1px solid var(--color-border-light)'
+                      }}
                     >
                       #{tag}
                     </span>
                   ))}
+                  {post.tags.length > 3 && (
+                    <span
+                      className="px-2 py-1 rounded-md text-xs"
+                      style={{
+                        color: 'var(--color-text-tertiary)'
+                      }}
+                    >
+                      +{post.tags.length - 3}
+                    </span>
+                  )}
                 </div>
 
-                <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-                  <span>{new Date(post.date).toLocaleDateString('ko-KR')}</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                {/* Card Footer */}
+                <div
+                  className="flex items-center justify-between text-sm pt-4"
+                  style={{
+                    borderTop: '1px solid var(--color-border-light)',
+                    color: 'var(--color-text-tertiary)'
+                  }}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span role="img" aria-label="Date">📅</span>
+                    {new Date(post.date).toLocaleDateString('ko-KR')}
+                  </span>
+                  <span
+                    className="group-hover:translate-x-1 transition-transform text-base"
+                    style={{ color: 'var(--color-primary-500)' }}
+                  >
+                    →
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
-        </div>
+        </section>
       ))}
 
+      {/* Empty State */}
       {categories.length === 0 && (
-        <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-          No articles found. Add some markdown files to get started!
+        <div
+          className="text-center py-16 sm:py-24 card"
+          style={{
+            background: 'var(--color-bg-secondary)'
+          }}
+        >
+          <div className="text-6xl mb-4">📚</div>
+          <h2 className="text-responsive-h3 mb-2 text-[var(--color-text-primary)]">
+            No articles yet
+          </h2>
+          <p className="text-responsive-body text-[var(--color-text-secondary)]">
+            Add some markdown files to get started!
+          </p>
         </div>
       )}
     </div>
