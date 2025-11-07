@@ -16,74 +16,51 @@ export default function LanguageToggle({ onModeChange }: LanguageToggleProps) {
     onModeChange(newMode);
   };
 
-  const buttonBaseStyles = "px-4 sm:px-6 py-3 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 focus-ring";
-
   const getButtonStyles = (isActive: boolean) => {
     if (isActive) {
       return {
         background: 'var(--color-bg-elevated)',
-        color: 'var(--color-primary-600)',
-        boxShadow: 'var(--shadow-md)',
-        border: '2px solid var(--color-primary-400)'
+        color: 'var(--color-text-primary)',
+        border: '1px solid var(--color-border)',
+        fontWeight: '500'
       };
     }
     return {
       background: 'transparent',
-      color: 'var(--color-text-secondary)',
-      border: '2px solid transparent'
+      color: 'var(--color-text-tertiary)',
+      border: '1px solid transparent',
+      fontWeight: '400'
     };
   };
 
   return (
     <div
-      className="inline-flex items-center gap-1 p-1.5 sm:p-2 rounded-xl"
+      className="inline-flex items-center gap-1 p-1 rounded-lg"
       style={{
         background: 'var(--color-bg-secondary)',
-        border: '1px solid var(--color-border-light)'
+        border: '1px solid var(--color-border)'
       }}
       role="group"
       aria-label="Language display mode"
     >
       <button
         onClick={() => handleModeChange('english')}
-        className={buttonBaseStyles}
+        className="px-4 py-2 rounded-md text-sm transition-all focus-ring"
         style={getButtonStyles(mode === 'english')}
         aria-pressed={mode === 'english'}
         aria-label="Show English only"
       >
-        <span className="flex items-center gap-2">
-          <span className="text-base sm:text-lg" role="img" aria-hidden="true">🇬🇧</span>
-          <span>English</span>
-        </span>
+        English
       </button>
 
       <button
         onClick={() => handleModeChange('both')}
-        className={buttonBaseStyles}
+        className="px-4 py-2 rounded-md text-sm transition-all focus-ring whitespace-nowrap"
         style={getButtonStyles(mode === 'both')}
         aria-pressed={mode === 'both'}
         aria-label="Show both English and Korean"
       >
-        <span className="flex items-center gap-2">
-          <span className="hidden sm:inline text-base sm:text-lg" role="img" aria-hidden="true">🌐</span>
-          <span className="whitespace-nowrap">
-            <span className="hidden sm:inline">English | 한국어</span>
-            <span className="sm:hidden">Both</span>
-          </span>
-        </span>
-      </button>
-
-      <button
-        onClick={() => handleModeChange('korean')}
-        className={buttonBaseStyles}
-        style={getButtonStyles(mode === 'korean')}
-        aria-pressed={mode === 'korean'}
-        aria-label="Show Korean only"
-      >
-        <span className="flex items-center gap-2">
-          <span className="text-base sm:text-lg" role="img" aria-hidden="true">🇰🇷</span>
-          <span>한국어</span>
-        </span>
+        English | 한국어
       </button>
     </div>
   );

@@ -44,7 +44,6 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu after clicking
       setIsOpen(false);
     }
   };
@@ -58,22 +57,33 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
         onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden fixed bottom-6 right-6 z-50 p-4 rounded-full focus-ring"
         style={{
-          background: 'var(--color-primary-600)',
-          color: 'white',
-          boxShadow: 'var(--shadow-xl)',
-          minHeight: '56px',
-          minWidth: '56px'
+          background: 'var(--color-bg-elevated)',
+          border: '1px solid var(--color-border)',
+          boxShadow: 'var(--shadow-hover)',
+          color: 'var(--color-text-primary)'
         }}
         aria-label="Toggle table of contents"
         aria-expanded={isOpen}
       >
-        <span className="text-xl">{isOpen ? '✕' : '📑'}</span>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          <line x1="3" y1="6" x2="17" y2="6" />
+          <line x1="3" y1="10" x2="17" y2="10" />
+          <line x1="3" y1="14" x2="17" y2="14" />
+        </svg>
       </button>
 
       {/* Mobile Overlay */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -86,34 +96,33 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
           top-0 lg:top-8
           right-0 lg:right-auto
           h-full lg:h-auto
-          w-80 lg:w-auto
+          w-80 lg:w-64
           max-h-screen lg:max-h-[calc(100vh-4rem)]
           overflow-y-auto
           z-40 lg:z-auto
-          p-6 lg:p-0
-          transition-transform duration-300 ease-in-out
+          p-6 lg:p-4
+          transition-transform duration-200
           ${isOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
         `}
         style={{
           background: 'var(--color-bg-elevated)',
-          borderLeft: '1px solid var(--color-border-light)'
+          borderLeft: '1px solid var(--color-border)'
         }}
         aria-label="Table of contents"
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-6 pb-4" style={{
-          borderBottom: '2px solid var(--color-border-light)'
+          borderBottom: '1px solid var(--color-border)'
         }}>
-          <h3 className="text-base sm:text-lg font-semibold text-[var(--color-text-primary)] flex items-center gap-2">
-            <span role="img" aria-hidden="true">📑</span>
-            <span>Table of Contents</span>
+          <h3 className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+            Contents
           </h3>
           <button
             onClick={() => setIsOpen(false)}
             className="lg:hidden p-2 rounded-lg hover:bg-[var(--color-bg-secondary)] focus-ring"
             aria-label="Close table of contents"
           >
-            <span className="text-xl">✕</span>
+            ✕
           </button>
         </div>
 
@@ -124,24 +133,19 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
             return (
               <li
                 key={heading.id}
-                style={{ paddingLeft: `${(heading.level - 1) * 1}rem` }}
+                style={{ paddingLeft: `${(heading.level - 1) * 0.75}rem` }}
               >
                 <button
                   onClick={() => handleClick(heading.id)}
-                  className={`
-                    w-full text-left py-2 px-3 rounded-lg
-                    transition-all duration-200
-                    focus-ring
-                    ${isActive ? 'font-medium' : ''}
-                  `}
+                  className="w-full text-left py-2 px-3 rounded-md text-sm transition-all focus-ring"
                   style={{
-                    color: isActive ? 'var(--color-primary-600)' : 'var(--color-text-secondary)',
-                    background: isActive ? 'var(--color-primary-50)' : 'transparent',
-                    borderLeft: isActive ? '3px solid var(--color-primary-500)' : '3px solid transparent'
+                    color: isActive ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                    background: isActive ? 'var(--color-bg-secondary)' : 'transparent',
+                    fontWeight: isActive ? '500' : '400'
                   }}
                   aria-current={isActive ? 'location' : undefined}
                 >
-                  <span className="text-sm line-clamp-2">{heading.text}</span>
+                  {heading.text}
                 </button>
               </li>
             );
@@ -150,24 +154,24 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
 
         {/* Progress Indicator */}
         <div className="mt-6 pt-4" style={{
-          borderTop: '1px solid var(--color-border-light)'
+          borderTop: '1px solid var(--color-border)'
         }}>
-          <div className="text-xs text-[var(--color-text-tertiary)] mb-2">
-            Reading Progress
+          <div className="text-xs mb-2" style={{ color: 'var(--color-text-tertiary)' }}>
+            Progress
           </div>
           <div
-            className="h-2 rounded-full overflow-hidden"
+            className="h-1.5 rounded-full overflow-hidden"
             style={{ background: 'var(--color-bg-secondary)' }}
           >
             <div
               className="h-full transition-all duration-300"
               style={{
-                background: 'var(--color-primary-500)',
+                background: 'var(--color-primary)',
                 width: `${((headings.findIndex(h => h.id === activeId) + 1) / headings.length) * 100}%`
               }}
             />
           </div>
-          <div className="text-xs text-[var(--color-text-tertiary)] mt-2 text-right">
+          <div className="text-xs mt-2 text-right" style={{ color: 'var(--color-text-tertiary)' }}>
             {Math.round(((headings.findIndex(h => h.id === activeId) + 1) / headings.length) * 100)}%
           </div>
         </div>

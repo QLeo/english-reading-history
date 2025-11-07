@@ -17,34 +17,33 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
 
   return (
     <article className="container-responsive spacing-section">
-      {/* Header - Mobile Optimized */}
-      <header className="mb-8 sm:mb-12 animate-fade-in">
+      {/* Header */}
+      <header className="mb-12 sm:mb-16 animate-fade-in">
         {/* Meta Information */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <div className="flex flex-wrap items-center gap-3 mb-6 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
           <span className="badge" style={{
-            background: 'var(--color-accent-100)',
-            color: 'var(--color-accent-800)'
+            background: 'var(--color-badge-purple)',
+            color: 'var(--color-badge-purple-text)'
           }}>
             {post.difficulty}
           </span>
-          <span className="text-[var(--color-text-tertiary)] hidden sm:inline">•</span>
-          <span className="text-sm text-[var(--color-text-tertiary)]">{post.readingTime}</span>
-          <span className="text-[var(--color-text-tertiary)] hidden sm:inline">•</span>
-          <span className="text-sm text-[var(--color-text-tertiary)]">
-            {new Date(post.date).toLocaleDateString('ko-KR')}
-          </span>
+          <span>•</span>
+          <span>{post.readingTime}</span>
+          <span>•</span>
+          <span>{new Date(post.date).toLocaleDateString('ko-KR')}</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-responsive-h1 mb-4 sm:mb-6 text-[var(--color-text-primary)] leading-tight">
+        <h1 className="text-responsive-h1 mb-8" style={{ color: 'var(--color-text-primary)' }}>
           {post.title}
         </h1>
 
         {/* Category & Tags */}
-        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+        <div className="flex flex-wrap gap-2 mb-8">
           <span className="badge" style={{
-            background: 'var(--color-primary-100)',
-            color: 'var(--color-primary-800)'
+            background: 'var(--color-bg-tertiary)',
+            color: 'var(--color-text-secondary)',
+            border: '1px solid var(--color-border)'
           }}>
             {post.category}
           </span>
@@ -53,49 +52,48 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
               key={tag}
               className="badge"
               style={{
-                background: 'var(--color-bg-secondary)',
-                color: 'var(--color-text-secondary)',
-                border: '1px solid var(--color-border-light)'
+                background: 'transparent',
+                color: 'var(--color-text-tertiary)',
+                border: '1px solid var(--color-border)'
               }}
             >
-              #{tag}
+              {tag}
             </span>
           ))}
         </div>
 
-        {/* Language Toggle - Sticky on mobile */}
-        <div className="flex justify-center sticky top-0 z-10 bg-[var(--color-bg-primary)] py-4 -mx-4 px-4 sm:static sm:bg-transparent sm:py-0 sm:mx-0 sm:px-0">
+        {/* Language Toggle */}
+        <div className="flex justify-start">
           <LanguageToggle onModeChange={setDisplayMode} />
         </div>
       </header>
 
-      {/* Main Content - Improved Spacing */}
-      <div className="prose prose-lg max-w-none mb-8 sm:mb-12">
+      {/* Main Content */}
+      <div className="prose max-w-none mb-16">
         {displayMode === 'english' && (
           <div
-            className="english-content animate-fade-in"
+            className="animate-fade-in"
             dangerouslySetInnerHTML={{ __html: englishHtml }}
           />
         )}
 
         {displayMode === 'korean' && koreanHtml && (
           <div
-            className="korean-content animate-fade-in"
+            className="animate-fade-in"
             dangerouslySetInnerHTML={{ __html: koreanHtml }}
           />
         )}
 
         {displayMode === 'both' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             <div
-              className="english-content lg:border-r lg:pr-8 animate-fade-in"
-              style={{ borderColor: 'var(--color-border-light)' }}
+              className="animate-fade-in lg:border-r lg:pr-8"
+              style={{ borderColor: 'var(--color-border)' }}
               dangerouslySetInnerHTML={{ __html: englishHtml }}
             />
             {koreanHtml && (
               <div
-                className="korean-content animate-fade-in"
-                style={{ animationDelay: '0.1s' }}
+                className="animate-fade-in"
                 dangerouslySetInnerHTML={{ __html: koreanHtml }}
               />
             )}
@@ -103,23 +101,17 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
         )}
       </div>
 
-      {/* Comprehension Questions Section - Enhanced with Icons */}
+      {/* Comprehension Questions Section */}
       {questionsHtml && (
         <section
-          className="section-container mb-6 sm:mb-8 animate-fade-in"
+          className="section-container mb-8 animate-fade-in"
           style={{
-            background: 'var(--color-section-questions)',
-            borderColor: 'var(--color-primary-300)'
+            background: 'var(--color-section-questions)'
           }}
         >
-          <div className="flex items-start gap-3 mb-4">
-            <span className="text-2xl sm:text-3xl" role="img" aria-label="Questions">
-              ❓
-            </span>
-            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
-              Comprehension Questions
-            </h2>
-          </div>
+          <h2 className="text-responsive-h3 mb-6" style={{ color: 'var(--color-text-primary)' }}>
+            Comprehension Questions
+          </h2>
           <div
             className="prose max-w-none"
             dangerouslySetInnerHTML={{ __html: questionsHtml }}
@@ -127,23 +119,17 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
         </section>
       )}
 
-      {/* Korean Translation Section - Enhanced */}
+      {/* Korean Translation Section */}
       {koreanHtml && displayMode === 'english' && (
         <section
-          className="section-container mb-6 sm:mb-8 animate-fade-in"
+          className="section-container mb-8 animate-fade-in"
           style={{
-            background: 'var(--color-section-translation)',
-            borderColor: 'var(--color-accent-300)'
+            background: 'var(--color-section-translation)'
           }}
         >
-          <div className="flex items-start gap-3 mb-4">
-            <span className="text-2xl sm:text-3xl" role="img" aria-label="Translation">
-              🌐
-            </span>
-            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
-              한국어 번역 (Korean Translation)
-            </h2>
-          </div>
+          <h2 className="text-responsive-h3 mb-6" style={{ color: 'var(--color-text-primary)' }}>
+            한국어 번역
+          </h2>
           <div
             className="prose max-w-none"
             dangerouslySetInnerHTML={{ __html: koreanHtml }}
@@ -151,23 +137,17 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
         </section>
       )}
 
-      {/* Vocabulary & Expressions Section - Enhanced */}
+      {/* Vocabulary & Expressions Section */}
       {vocabularyHtml && (
         <section
           className="section-container animate-fade-in"
           style={{
-            background: 'var(--color-section-vocabulary)',
-            borderColor: 'var(--color-accent-300)'
+            background: 'var(--color-section-vocabulary)'
           }}
         >
-          <div className="flex items-start gap-3 mb-4">
-            <span className="text-2xl sm:text-3xl" role="img" aria-label="Vocabulary">
-              📚
-            </span>
-            <h2 className="text-responsive-h3 text-[var(--color-text-primary)] m-0">
-              Useful Expressions & Vocabulary
-            </h2>
-          </div>
+          <h2 className="text-responsive-h3 mb-6" style={{ color: 'var(--color-text-primary)' }}>
+            Useful Expressions & Vocabulary
+          </h2>
           <div
             className="prose max-w-none"
             dangerouslySetInnerHTML={{ __html: vocabularyHtml }}
