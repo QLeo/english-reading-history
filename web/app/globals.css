@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Prose styles for markdown content */
+@layer base {
+  .prose {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-white;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold mt-6 mb-3 text-gray-900 dark:text-white;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold mt-5 mb-2 text-gray-900 dark:text-white;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 space-y-2;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 space-y-2;
+  }
+
+  .prose li {
+    @apply ml-4;
+  }
+
+  .prose strong {
+    @apply font-semibold text-gray-900 dark:text-white;
+  }
+
+  .prose a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+  }
+
+  .prose code {
+    @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic my-4;
+  }
+
+  .prose hr {
+    @apply border-gray-300 dark:border-gray-700 my-8;
+  }
+}
