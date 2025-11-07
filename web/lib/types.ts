@@ -4,7 +4,6 @@ export interface Post {
   date: string;
   category: string;
   tags: string[];
-  difficulty: string;
   level: string;
   readingTime: string;
   content: string;
@@ -20,7 +19,6 @@ export interface PostMetadata {
   date: string;
   category: string;
   tags: string[];
-  difficulty: string;
   level: string;
   readingTime: string;
 }

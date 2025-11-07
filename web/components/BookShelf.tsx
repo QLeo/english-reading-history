@@ -74,7 +74,7 @@ export default function BookShelf({ posts }: BookShelfProps) {
                       color: 'var(--color-badge-purple-text)'
                     }}
                   >
-                    {post.difficulty}
+                    {post.level}
                   </span>
                   <span className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
                     {post.readingTime}

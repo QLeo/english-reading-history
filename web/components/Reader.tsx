@@ -19,7 +19,7 @@ export default function Reader({ post, englishHtml, koreanHtml, questionsHtml, v
         {/* Meta Information */}
         <div className="flex flex-wrap items-center gap-3 mb-6 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
           <span className="badge">
-            {post.difficulty}
+            {post.level}
           </span>
           <span>•</span>
           <span>{post.readingTime}</span>

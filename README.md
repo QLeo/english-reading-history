@@ -40,7 +40,6 @@ title: "Your Article Title"
 date: "2025-11-07"
 category: "Category Name"
 tags: ["tag1", "tag2"]
-difficulty: "B1"
 level: "CEFR-B1"
 readingTime: "5 min"
 ---

@@ -33,7 +33,6 @@ export function getAllPosts(): PostMetadata[] {
             date: data.date,
             category: data.category,
             tags: data.tags || [],
-            difficulty: data.difficulty,
             level: data.level,
             readingTime: data.readingTime
           });
@@ -66,7 +65,6 @@ export function getPostBySlug(slug: string): Post | null {
       date: data.date,
       category: data.category,
       tags: data.tags || [],
-      difficulty: data.difficulty,
       level: data.level,
       readingTime: data.readingTime,
       content,
